@@ -50,27 +50,20 @@ The workflow implements rigorous stationarity testing (ADF & KPSS), feature engi
 
 ```text
 .
-├── notebooks/
-│   ├── 01_step1_stationarity.ipynb    # Stationarity tests & transformations
-│   ├── 02_step2_mlp.ipynb              # MLP lag-based forecasting
-│   ├── 03_step3_cnn_gaf.ipynb          # CNN with GAF image encoding
-│   └── 04_step4_compare.ipynb          # Model comparison & analysis
-├── data/
-│   └── step1_AAPL_1d_data.csv          # Processed AAPL time series data
-├── results/
-│   ├── step2_mlp_results.csv           # MLP evaluation metrics
-│   ├── step3_cnn_gaf_scalar_results.csv # CNN evaluation metrics
-│   └── step4_mlp_vs_cnn_comparison.csv  # Comparative analysis
-├── figures/
-│   ├── Fig01_price_levels.png          # Price visualization
-│   ├── Fig02_hist_levels.png           # Distribution analysis
-│   ├── ...
-│   └── Fig33_r2_fracdiff_mlp_vs_cnn.png # Final comparison
-├── report/
-│   └── Project_Report.docx             # Comprehensive project report
-├── TASKS.md                             # Project tasks and milestones
-├── requirements.txt                     # Python dependencies
-└── README.md                            # This file
+├── imgs/                               # Directory for images
+├── .gitignore                          # Git ignore rules
+├── dl1.png                             # Project banner image
+├── main.ipynb                          # Main Jupyter Notebook containing all code and experiments
+├── main.pdf                            # PDF export of the Jupyter Notebook
+├── Project_tasks.pdf                   # Project requirements and tasks
+├── README.md                           # This documentation file
+├── Report.pdf                          # Comprehensive project report (PDF format)
+├── step1_AAPL_1d_data.csv              # Processed AAPL time series data
+├── step2_mlp_results.csv               # Evaluation metrics for the MLP models
+├── step3_cnn_gaf_results.csv           # Evaluation metrics for the baseline CNN models
+├── step3_cnn_gaf_scalar_results.csv    # Evaluation metrics for the CNN (GAF + scalar) models
+├── step4_mlp_vs_cnn_comparison.csv     # Final comparative analysis metrics
+└── TASKS.md                            # Detailed project milestones
 ```
 
 ---
@@ -96,14 +89,17 @@ pip install -r requirements.txt
 
 ### 2. Execute Notebooks
 
-Open VS Code with Jupyter extension and run notebooks **sequentially**:
+Open VS Code with the Jupyter extension and run the cells in main.ipynb sequentially. The notebook encompasses:
 
-1. `01_step1_stationarity.ipynb` — Data loading, stationarity tests, transformations
-2. `02_step2_mlp.ipynb` — MLP model training and evaluation
-3. `03_step3_cnn_gaf.ipynb` — CNN with GAF encoding training
-4. `04_step4_compare.ipynb` — Comparative analysis and visualization
+1. Data loading, stationarity tests, and transformations
 
-**Outputs**: All tables and metrics are saved to `results/`, figures can be exported to `figures/`.
+2. MLP model training and evaluation
+
+3. CNN with GAF encoding training
+
+4. Comparative analysis and visualization
+
+All output tables and metrics will be generated as .csv files in the root directory.
 
 ---
 
@@ -177,25 +173,23 @@ Open VS Code with Jupyter extension and run notebooks **sequentially**:
 
 ---
 
-## 📈 Figures Gallery
+## 📈 Results Visualization
 
-### Stationarity & Diagnostics
-- Price levels with rolling statistics
-- ACF/PACF plots for levels, returns, and fractional differences
-- Histogram and distribution analysis
-- Fractional differencing grid search results
+1. The Data: Non-Stationary Price Levels
+Raw AAPL price levels exhibit strong persistence and upward trends, highlighting the need for stationarity testing.
+(Image: imgs/price_levels.png)
 
-### Model Predictions
-- MLP predictions vs actual values (train/val/test)
-- CNN (GAF+scalar) predictions vs actual values
-- Training and validation loss curves
-- Residual analysis plots
+2. Feature Engineering: Gramian Angular Field (GAF)
+Time-series windows are encoded into 2D images to allow Convolutional Neural Networks to extract spatial-temporal textures.
+(Image: imgs/gaf_sample.png)
 
-### Comparative Analysis
-- MLP vs CNN performance across representations
-- R² comparison bar charts
-- RMSE/MAE heatmaps
-- Model architecture diagrams
+3. Forecasting: MLP Prediction on Levels
+The lag-based Multi-Layer Perceptron successfully captures the 1-step-ahead persistence of the raw price levels.
+(Image: imgs/mlp_prediction.png)
+
+4. Final Model Comparison
+Comparing Test RMSE across the three data representations for both MLP and CNN architectures.
+(Image: imgs/final_comparison.png)
 
 ---
 
@@ -226,21 +220,37 @@ Wang, Z., & Oates, T. (2015). Imaging time-series to improve classification and 
 
 ---
 
-## 🤝 Contributing
+## Citation
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+If you use this project in academic research, publications, educational
+materials, or derivative works, please cite the project.
 
----
+This repository includes a CITATION.cff file, so GitHub provides a
+"Cite this repository" button in the repository sidebar. You can use it
+to obtain citations in BibTeX, APA, and other supported formats.
+
+Suggested citation:
+
+Arain, S. U. R. (2026). [dl-finance-ts-forecasting] (Version 1.0) [Software].
+https://github.com/sanaurrehmanarain/dl-finance-ts-forecasting
+
+Author: Sana Ur Rehman Arain
+
+Profession: Data Scientist
+
+GitHub: https://github.com/sanaurrehmanarain
+
+Contact: sana.arain.work@gmail.com
+
+If you build upon this work, attribution is appreciated and helps others
+discover the original project.
+
+Note: The MIT License requires that the original copyright
+notice be retained in copies of the Software.
 
 ## 📄 License
 
-This project is available under the MIT License. See LICENSE file for details.
-
----
-
-## 📧 Contact
-
-For questions or collaboration inquiries, please open an issue in the repository.
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
