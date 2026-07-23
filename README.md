@@ -177,19 +177,19 @@ All output tables and metrics will be generated as .csv files in the root direct
 
 1. The Data: Non-Stationary Price Levels
 Raw AAPL price levels exhibit strong persistence and upward trends, highlighting the need for stationarity testing.
-(Image: imgs/price_levels.png)
+![AAPL Price Levels](imgs/price_levels.png)
 
-2. Feature Engineering: Gramian Angular Field (GAF)
+3. Feature Engineering: Gramian Angular Field (GAF)
 Time-series windows are encoded into 2D images to allow Convolutional Neural Networks to extract spatial-temporal textures.
-(Image: imgs/gaf_sample.png)
+![gaf_sample](imgs/gaf_sample.png)
 
-3. Forecasting: MLP Prediction on Levels
+5. Forecasting: MLP Prediction on Levels
 The lag-based Multi-Layer Perceptron successfully captures the 1-step-ahead persistence of the raw price levels.
-(Image: imgs/mlp_prediction.png)
+![mlp_prediction](imgs/mlp_prediction.png)
 
-4. Final Model Comparison
+7. Final Model Comparison
 Comparing Test RMSE across the three data representations for both MLP and CNN architectures.
-(Image: imgs/final_comparison.png)
+![final_comparison](final_comparison.png)
 
 ---
 
