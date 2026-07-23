@@ -189,7 +189,7 @@ The lag-based Multi-Layer Perceptron successfully captures the 1-step-ahead pers
 
 7. Final Model Comparison
 Comparing Test RMSE across the three data representations for both MLP and CNN architectures.
-![final_comparison](final_comparison.png)
+![final_comparison](imgs/final_comparison.png)
 
 ---
 
